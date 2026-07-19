@@ -1,0 +1,11 @@
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example
+node_modules/
+.DS_Store
+*.penc
+*.backup
+projectos-*-backup-*.json
