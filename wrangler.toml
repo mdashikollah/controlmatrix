@@ -1,3 +1,6 @@
-name = "projectos-sentinel"
+name = "controlmatrix"
 compatibility_date = "2026-07-19"
 pages_build_output_dir = "."
+
+[vars]
+OPENAI_MODEL = "gpt-5.6-terra"
