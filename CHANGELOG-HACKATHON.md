@@ -22,8 +22,9 @@ This document separates the pre-existing application foundation from work added 
 - Pre-Build-Week baseline: unavailable in the imported package; no unsupported baseline date is claimed.
 - First public Build Week integration commit: [`c04cabe`](https://github.com/mdashikollah/controlmatrix/commit/c04cabe50365ea841f91b51aeaae1bd2c3260778)
 - Current judging history: [`c04cabe..main`](https://github.com/mdashikollah/controlmatrix/compare/c04cabe50365ea841f91b51aeaae1bd2c3260778...main)
-- Primary Codex build/audit Session ID: `019f800b-8078-7a82-9f21-cdd1548cad8e`
-- Supporting ChatGPT planning conversation: `6a5d142e-5ef4-83ee-b457-33e7b6d2cc6d` (not a substitute for the Codex Session ID)
+- Primary Codex `/feedback` Session ID: `6a5d0af0-d5bc-83ee-97f5-e4de896992f8`
+- Final Codex submission-audit task ID: `019f800b-8078-7a82-9f21-cdd1548cad8e`
+- Supporting ChatGPT planning conversation: `6a5d142e-5ef4-83ee-b457-33e7b6d2cc6d` (supporting context only)
 - Live URL: <https://controlmatrix.pages.dev>
 - Video URL: <https://youtu.be/jwCntyWTdt4>
 
