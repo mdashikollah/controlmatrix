@@ -131,8 +131,9 @@ See [TEST_PLAN.md](TEST_PLAN.md) for the manual functional, responsive, offline,
 
 ## Codex and GPT-5.6 evidence
 
-- Primary Codex build/audit Session ID: `019f800b-8078-7a82-9f21-cdd1548cad8e`
-- Supporting ChatGPT planning conversation: `6a5d142e-5ef4-83ee-b457-33e7b6d2cc6d` (not a substitute for the Codex Session ID)
+- Primary Codex `/feedback` Session ID: `6a5d0af0-d5bc-83ee-97f5-e4de896992f8`
+- Final Codex submission-audit task ID: `019f800b-8078-7a82-9f21-cdd1548cad8e`
+- Supporting ChatGPT planning conversation: `6a5d142e-5ef4-83ee-b457-33e7b6d2cc6d` (supporting context only)
 - Build Week repository history: [`c04cabe..main`](https://github.com/mdashikollah/controlmatrix/compare/c04cabe50365ea841f91b51aeaae1bd2c3260778...main)
 - Public demo: <https://controlmatrix.pages.dev>
 - Public YouTube demo: <https://youtu.be/jwCntyWTdt4>
