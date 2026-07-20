@@ -1,6 +1,6 @@
-# OpenAI Build Week Change Evidence (commit evidence required)
+# OpenAI Build Week Change Evidence
 
-This recovered source package does not include its original Git history. Treat the entries below as a feature inventory, not proof of Build Week timing or authorship, until they are linked to verified commits.
+The imported source package does not include a pre-Build-Week Git baseline. Treat the "before" column as a conservative feature inventory, not independent proof of timing or authorship. The dated public integration history begins with commit [`c04cabe`](https://github.com/mdashikollah/controlmatrix/commit/c04cabe50365ea841f91b51aeaae1bd2c3260778).
 
 This document separates the pre-existing application foundation from work added during the OpenAI Build Week submission period. Keep the commit links and Codex session evidence current.
 
@@ -17,22 +17,13 @@ This document separates the pre-existing application foundation from work added 
 | Product focus | Broad internal management app | Hackathon positioning as operational deferral governance | Devpost edit + README |
 | Language | Some “blockchain-style” descriptions | Corrected to “hash-chained tamper-evident audit trail” | Diff/commit |
 
-## Evidence placeholders
+## Evidence
 
-- Baseline commit or dated source: `REPLACE_WITH_BASELINE`
-- First Build Week extension commit: `REPLACE_WITH_FIRST_BUILD_WEEK_COMMIT`
-- Final judging build commit: `REPLACE_WITH_FINAL_BUILD_WEEK_COMMIT`
-- Primary Codex `/feedback` Session ID: `REPLACE_WITH_PRIMARY_CODEX_SESSION_ID`
-- Live URL: `REPLACE_WITH_LIVE_URL`
-- Video URL: `REPLACE_WITH_VIDEO_URL`
+- Pre-Build-Week baseline: unavailable in the imported package; no unsupported baseline date is claimed.
+- First public Build Week integration commit: [`c04cabe`](https://github.com/mdashikollah/controlmatrix/commit/c04cabe50365ea841f91b51aeaae1bd2c3260778)
+- Current judging history: [`c04cabe..main`](https://github.com/mdashikollah/controlmatrix/compare/c04cabe50365ea841f91b51aeaae1bd2c3260778...main)
+- Primary Codex Session ID: must be copied from the genuine primary build task into the Devpost submission field.
+- Live URL: <https://controlmatrix.pages.dev>
+- Video URL: <https://youtu.be/jwCntyWTdt4>
 
-## Suggested commit sequence
-
-1. `chore: preserve pre-build-week baseline and add change evidence`
-2. `feat: add synthetic judge demo and focused product positioning`
-3. `feat: add GPT-5.6 operational brief Cloudflare endpoint`
-4. `feat: record human AI review decisions in audit evidence`
-5. `fix: remove unrelated navigation and correct security terminology`
-6. `docs: add deployment, demo and submission evidence`
-
-Do not squash away all evidence until judging is complete. Never fabricate dates or backdate commits.
+Do not squash away the public evidence until judging is complete. Never fabricate dates or backdate commits.
