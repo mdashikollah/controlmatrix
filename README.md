@@ -11,24 +11,24 @@ ControlMatrix is an offline-first operational-governance application for teams t
 1. Open the deployed URL.
 2. Select **Guest demo login**, or press **Start 90-second judge demo**.
 3. Open the synthetic high-risk deferral.
-4. Press **GPT-5.6 Brief**.
+4. Press **GPT-5.6 Brief**. If the optional live endpoint is unavailable, continue with the core offline workflow and review the documented Build Week implementation.
 5. Confirm the record is synthetic/non-confidential.
-6. Generate the live brief.
+6. Generate the live brief when the deployment has a valid server-side API key.
 7. Edit as needed, choose Accepted / Edited / Rejected and enter a reviewer note.
 8. Save the human decision, then open the Audit Trail.
 
 No live business, client or employee data is included in the sample workspace.
 
-## Recovered Build Week extension (verify against commit history)
+## Build Week extension
 
-The recovered submission package labels the following components as Build Week work. The original Git history was not included in the package, so it cannot independently establish timing or authorship. Before publishing, replace any time-based claim with links to the relevant commits or repository history.
+The imported source package did not include a pre-Build-Week Git baseline. The public repository history therefore proves the dated Build Week integration and audit work beginning with commit [`c04cabe`](https://github.com/mdashikollah/controlmatrix/commit/c04cabe50365ea841f91b51aeaae1bd2c3260778), but it does not independently prove the age or authorship of the earlier foundation. The distinction below is intentionally conservative.
 
 The pre-existing foundation included offline task, project and deferral registers, primary/backup ownership, team roles, backup/restore and audit controls.
 
 The Build Week extension adds:
 
 - A judge-first synthetic workflow and one-click guided demo.
-- A live GPT-5.6 Operational Brief attached to task, project and deferral records.
+- An optional live GPT-5.6 Operational Brief attached to task, project and deferral records. The core workflow does not require an API key.
 - Structured model output for situation summary, attention reason, actions, gaps, escalation date, follow-up draft and assumptions.
 - Explicit data-safety confirmation before sending a record to the AI endpoint.
 - Human Accept / Edit / Reject decisions with a mandatory reviewer note.
@@ -46,10 +46,10 @@ See [CHANGELOG-HACKATHON.md](CHANGELOG-HACKATHON.md) for the evidence table.
 Browser / installable PWA
   ├─ Local task, project, deferral and audit workflow
   ├─ IndexedDB / local browser persistence
-  └─ POST /api/operational-brief
+  └─ Optional POST /api/operational-brief
            ↓
 Cloudflare Pages Function
-  ├─ OPENAI_API_KEY stored as an encrypted secret
+  ├─ OPENAI_API_KEY stored as an encrypted secret when live AI is enabled
   ├─ Input size and structure validation
   └─ OpenAI Responses API — gpt-5.6-terra
            ↓
@@ -70,9 +70,9 @@ Human review → Accept / Edit / Reject → audit evidence
 6. Build output directory: `.` (the repository root).
 7. Deploy.
 8. Open **Settings → Variables and Secrets**.
-9. Add an encrypted secret named `OPENAI_API_KEY`.
-10. Optional variable: `OPENAI_MODEL=gpt-5.6-terra`.
-11. Redeploy and open `/api/operational-brief`; it should return `"configured": true`.
+9. To enable optional live AI, add an encrypted secret named `OPENAI_API_KEY`.
+10. Set `OPENAI_MODEL=gpt-5.6-terra` for the live AI endpoint.
+11. Redeploy and open `/api/operational-brief`; live AI is ready only when it returns `"configured": true`. Without the secret, the core offline application remains usable.
 
 Cloudflare dashboard **Direct Upload does not deploy a `/functions` directory**. Use Git integration or Wrangler for this package.
 
@@ -110,16 +110,16 @@ Copy `.env.example` to `.dev.vars` only for local Cloudflare Pages testing. `.de
 
 | Variable | Required | Purpose |
 |---|---:|---|
-| `OPENAI_API_KEY` | Yes for live AI | Cloudflare Pages secret used only by the server-side function. |
-| `OPENAI_MODEL` | Yes for live AI | One approved GPT-5.6 model identifier: `gpt-5.6`, `gpt-5.6-sol`, `gpt-5.6-terra`, or `gpt-5.6-luna`. |
+| `OPENAI_API_KEY` | Optional; required only for live AI | Cloudflare Pages secret used only by the server-side function. Never expose it to judges or browser code. |
+| `OPENAI_MODEL` | Optional; required only for live AI | Approved GPT-5.6 model identifier configured for the optional endpoint. |
 
 The endpoint rejects an unset or unsupported model identifier and never silently substitutes another model.
 
 ## How GPT-5.6 and Codex Were Used
 
-The Build Week extension adds a record-bound **GPT-5.6 Operational Brief**. The browser sends a reduced, user-confirmed task, project, or deferral record to `/api/operational-brief`; the Cloudflare Pages Function calls the OpenAI Responses API with a strict JSON schema. The configured GPT-5.6 model returns a summary, attention reason, recommended actions, missing information, escalation date, follow-up draft, and risks/assumptions. The app stores the model name, prompt version, request ID when returned, deterministic input hash, human decision, and reviewer note in local audit evidence.
+The Build Week extension adds an optional record-bound **GPT-5.6 Operational Brief**. When live AI is enabled, the browser sends a reduced, user-confirmed task, project, or deferral record to `/api/operational-brief`; the Cloudflare Pages Function calls the OpenAI Responses API with a strict JSON schema. The configured GPT-5.6 model returns a summary, attention reason, recommended actions, missing information, escalation date, follow-up draft, and risks/assumptions. The app stores the model name, prompt version, request ID when returned, deterministic input hash, human decision, and reviewer note in local audit evidence. Without a deployer-provided API key, task, project, deferral, audit and synthetic guest-demo functionality continues locally.
 
-Codex was used in this repository to inspect the recovered submission package, verify the static application and Cloudflare Function syntax, tighten the endpoint's input/output validation, reduce the AI payload, prevent CSV formula injection, narrow service-worker caching, correct unsupported product wording, and prepare the judge-facing documentation and verification checklists. This section does not claim that a live OpenAI API request was run during the audit; a deployed Pages secret is required to verify that separately.
+Codex was used in this repository to inspect the imported submission package, verify the static application and Cloudflare Function syntax, tighten the endpoint's input/output validation, reduce the AI payload, prevent CSV formula injection, narrow service-worker caching, correct unsupported product wording, and prepare the judge-facing documentation and verification checklists. This does not claim that a successful live OpenAI API response was produced during the repository audit. GPT-5.6 and Codex development evidence is distinct from optional runtime API authentication.
 
 ## Judge demo path
 
@@ -131,12 +131,10 @@ See [TEST_PLAN.md](TEST_PLAN.md) for the manual functional, responsive, offline,
 
 ## Codex and GPT-5.6 evidence
 
-Before final submission, replace the placeholders below:
-
-- Primary Codex `/feedback` Session ID: `REPLACE_WITH_PRIMARY_CODEX_SESSION_ID`
-- Main Build Week commit range: `REPLACE_WITH_FIRST_COMMIT..REPLACE_WITH_FINAL_COMMIT`
-- Public demo URL: `REPLACE_WITH_CLOUDFLARE_URL`
-- Public YouTube demo: `REPLACE_WITH_YOUTUBE_URL`
+- Primary Codex Session ID: submit the genuine ID from the primary build task in the required Devpost field; it cannot be reconstructed from Git history.
+- Build Week repository history: [`c04cabe..main`](https://github.com/mdashikollah/controlmatrix/compare/c04cabe50365ea841f91b51aeaae1bd2c3260778...main)
+- Public demo: <https://controlmatrix.pages.dev>
+- Public YouTube demo: <https://youtu.be/jwCntyWTdt4>
 
 Use the commit history to distinguish pre-existing functionality from Build Week additions. Do not describe old functionality as newly built.
 
