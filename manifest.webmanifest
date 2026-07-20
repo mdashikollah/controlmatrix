@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#f4f7fb",
   "theme_color": "#10233f",
-  "description": "Offline-first operational governance with GPT-5.6 operational briefs and human-reviewed audit evidence.",
+  "description": "Offline-first task, project and deferral governance with accountable ownership and audit evidence.",
   "icons": [
     {
       "src": "icon-192.png",
